@@ -1,5 +1,7 @@
 package com.upgrad.hirewheels.entities;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
@@ -26,11 +28,39 @@ public class Users {
     private String email;
 
     @Column(name="mobile_no", nullable = false, unique = true)
-    private int mobileNumber;
+    private String mobileNumber;
 
     @Column(name="role_id", nullable = false)
     private int roleId;
 
     @Column(name="wallet_money", precision = 8, scale = 2)
     private Double walletMoney = 10000.00;
+
+    public Users(String firstName,String lastName,String password,String email,
+                 String mobileNumber, int roleId, double walletMoney) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.email = email;
+        this.mobileNumber = mobileNumber;
+        this.roleId = roleId;
+        this.walletMoney = walletMoney;
+    }
+    public Users() {
+
+    }
+
+    @Override
+    public String toString() {
+        return "Users{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", mobileNumber='" + mobileNumber + '\'' +
+                ", roleId=" + roleId +
+                ", walletMoney=" + walletMoney +
+                '}';
+    }
 }
