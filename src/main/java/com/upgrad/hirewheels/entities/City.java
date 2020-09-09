@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -16,4 +17,24 @@ public class City {
 
     @Column(name="city_name", nullable = false)
     private String name;
+
+    @OneToMany(mappedBy = "city")
+    List<Location> locations;
+
+    public City(String name) {
+        this.name = name;
+    }
+
+    public City() {
+
+    }
+
+    @Override
+    public String toString() {
+        return "City{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", locations=" + locations +
+                '}';
+    }
 }

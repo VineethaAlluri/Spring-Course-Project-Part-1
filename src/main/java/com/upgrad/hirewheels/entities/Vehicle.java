@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -20,21 +21,57 @@ public class Vehicle {
     @Column(name="vehicle_number", nullable = false)
     private String vehicleNumber;
 
-    @Column(name="vehicle_subcategory_id")
-    private int vehicleSubCategoryId;
+    @ManyToOne
+    private VehicleSubCategory vehicleSubCategory;
 
     @Column(nullable = false)
     private String color;
 
-    @Column(name="location_id", nullable = false)
-    private int locationId;
+    @ManyToOne
+    private Location location;
 
-    @Column(name="fuel_type_id", nullable = false)
-    private int fuelTypeId;
+    @ManyToOne
+    private FuelType fuelType;
 
     @Column(name="availability_status", nullable = false)
     private int availabilityStatus;
 
     @Column(name = "vehicle_image_url", nullable = false)
     private String vehicleImageUrl;
+
+    @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL)
+    List<Booking> bookings;
+
+    public Vehicle(String vehicleModel, String vehicleNumber, VehicleSubCategory vehicleSubCategory,
+                   String color, Location location, FuelType fuelType, int availabilityStatus,
+                   String vehicleImageUrl) {
+        this.vehicleModel=vehicleModel;
+        this.vehicleNumber=vehicleNumber;
+        this.vehicleSubCategory=vehicleSubCategory;
+        this.color=color;
+        this.location=location;
+        this.fuelType=fuelType;
+        this.availabilityStatus=availabilityStatus;
+        this.vehicleImageUrl=vehicleImageUrl;
+    }
+
+    public Vehicle() {
+
+    }
+
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "id=" + id +
+                ", vehicleModel='" + vehicleModel + '\'' +
+                ", vehicleNumber='" + vehicleNumber + '\'' +
+                ", vehicleSubCategory=" + vehicleSubCategory +
+                ", color='" + color + '\'' +
+                ", location=" + location +
+                ", fuelType=" + fuelType +
+                ", availabilityStatus=" + availabilityStatus +
+                ", vehicleImageUrl='" + vehicleImageUrl + '\'' +
+                ", bookings=" + bookings +
+                '}';
+    }
 }

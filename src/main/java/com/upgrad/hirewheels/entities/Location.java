@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -23,6 +24,36 @@ public class Location {
     @Column(nullable = false, columnDefinition = "char(6)check (length(pincode)=5)")
     private String pincode;
 
-    @Column(name ="city_id", nullable = false)
-    private int cityId;
+    @ManyToOne
+    private City city;
+
+    @OneToMany(mappedBy = "location")
+    List<Vehicle> vehicles;
+
+    @OneToMany(mappedBy = "location")
+    List<Booking> bookings;
+
+    public Location(String name, String address, String pincode, City city) {
+        this.name = name;
+        this.address = address;
+        this.pincode = pincode;
+        this.city = city;
+    }
+
+    public Location() {
+
+    }
+
+    @Override
+    public String toString() {
+        return "Location{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", pincode='" + pincode + '\'' +
+                ", city=" + city +
+                ", vehicles=" + vehicles +
+                ", bookings=" + bookings +
+                '}';
+    }
 }
