@@ -12,19 +12,18 @@ import java.util.List;
 public class Vehicle {
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name ="vehicle_id")
     private int id;
 
-    @Column(name ="vehicle_model", nullable = false)
+    @Column(name ="vehicle_model")
     private String vehicleModel;
 
-    @Column(name="vehicle_number", nullable = false)
+    @Column(name="vehicle_number")
     private String vehicleNumber;
 
     @ManyToOne
     private VehicleSubCategory vehicleSubCategory;
 
-    @Column(nullable = false)
+    @Column()
     private String color;
 
     @ManyToOne
@@ -33,10 +32,10 @@ public class Vehicle {
     @ManyToOne
     private FuelType fuelType;
 
-    @Column(name="availability_status", nullable = false)
+    @Column(name="availability_status")
     private int availabilityStatus;
 
-    @Column(name = "vehicle_image_url", nullable = false)
+    @Column(name = "vehicle_image_url")
     private String vehicleImageUrl;
 
     @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL)
@@ -55,8 +54,8 @@ public class Vehicle {
         this.vehicleImageUrl=vehicleImageUrl;
     }
 
-    public Vehicle() {
-
+    public Vehicle(String vehicleModel) {
+        this.vehicleModel = vehicleModel;
     }
 
     @Override

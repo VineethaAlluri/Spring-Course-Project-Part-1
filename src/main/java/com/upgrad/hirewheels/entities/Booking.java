@@ -12,7 +12,6 @@ import java.sql.Date;
 public class Booking {
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="booking_id")
     private int id;
 
     @Column(name ="booking_date", nullable = false)

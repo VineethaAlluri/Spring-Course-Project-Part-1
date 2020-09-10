@@ -36,7 +36,7 @@
         <property name="packagesToScan" value="com.upgrad.hirewheels.entities"/>
         <property name="jpaProperties">
             <props>
-                <prop key="hibernate.hbm2ddl.auto">create</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
                 <prop key="hibernate.show_sql">true</prop>
                 <prop key="hibernate.dialect">org.hibernate.dialect.Oracle12cDialect</prop>
             </props>

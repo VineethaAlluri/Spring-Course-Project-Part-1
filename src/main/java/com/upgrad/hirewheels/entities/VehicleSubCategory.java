@@ -12,7 +12,6 @@ import java.util.List;
 public class VehicleSubCategory {
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name ="vehicle_subcategory_id")
     private int id;
 
     @Column(name="vehicle_subcategory_name", nullable = false, unique = true)

@@ -12,7 +12,6 @@ import java.util.List;
 public class Location {
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="location_id")
     private int id;
 
     @Column(name="location_name", nullable = false)
@@ -21,7 +20,7 @@ public class Location {
     @Column(nullable = false)
     private String address;
 
-    @Column(nullable = false, columnDefinition = "char(6)check (length(pincode)=5)")
+    @Column(nullable = false)
     private String pincode;
 
     @ManyToOne

@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository("vehicleCategoryDAO")
 public interface VehicleCategoryDAO extends JpaRepository<VehicleCategory, Integer> {
+    public VehicleCategory findByName(String name);
 }
